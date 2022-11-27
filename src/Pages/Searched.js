@@ -1,36 +1,37 @@
 import React, { useState, useEffect } from "react";
-import { motion } from "framer-motion";
-import Category from "../Components/Category.js";
-import Search from "../Components/Search.js";
-import { useParams } from "react-router-dom";
 import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Search from "../Components/Search.js";
+import Category from "../Components/Category.js";
 import Container from "react-bootstrap/Container";
+import { useParams } from "react-router-dom";
 
-function Cuisine() {
-  const [cuisine, setCuisine] = useState([]);
+function Searched() {
+  const [searchedrecipes, setSearchedrecipes] = useState([]);
   let params = useParams();
 
-  const getCuisine = async (name) => {
+  const getSearched = async (name) => {
+    console.log(name);
     const data = await fetch(
-      `https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_API_KEY}&cuisine=${name}&number=8`
+      `https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_API_KEY}&query=${name}&number=8`
     );
     const recipes = await data.json();
-    setCuisine(recipes.results);
+    console.log(recipes);
+    setSearchedrecipes(recipes.results);
   };
 
   useEffect(() => {
-    getCuisine(params.type);
-  }, [params.type]);
+    getSearched(params.search);
+  }, [params.search]);
 
   return (
     <Container fluid className="recipe-search" id="search">
       <Container className="recipe-search-info">
-        <Search />
-        <Category />
         <Row>
-          {cuisine.map((recipe, index) => {
+          <Search />
+          <Category />
+          {searchedrecipes.map((recipe, index) => {
             return (
               <Col md={3} xs={6}>
                 <Card className="recipe-card" key={index}>
@@ -50,4 +51,4 @@ function Cuisine() {
   );
 }
 
-export default Cuisine;
+export default Searched;

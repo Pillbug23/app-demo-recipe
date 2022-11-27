@@ -90,7 +90,7 @@ function Navigationbar() {
             >
               <Nav.Link
                 as={Link}
-                to="/"
+                to="/Authentication"
                 style={{ color: "#0a0a0a", fontFamily: "Roboto" }}
                 onClick={() => setExpand(false)}
               >

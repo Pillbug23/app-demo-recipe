@@ -16,4 +16,58 @@
   display: flex;
   justify-content: center;
   margin: 2rem 0rem;
+  flex-direction: row;
+}
+
+.link {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-right: 2rem;
+  text-decoration: none;
+  cursor: pointer;
+  transform: scale(0.8);
+  /*Inserts Pseudo element*/
+  &::before {
+    content: "";
+    display: inline-block;
+    height: 3px;
+    width: 130%;
+    background-color: var(--primary-color);
+    bottom: 3px;
+    position: absolute;
+    left: -8;
+    border-radius: 20px;
+    font-weight: bold;
+    transform: scaleX(0);
+    transition: transform calc(var(--animation-speed) * 0.3s) ease-in-out;
+  }
+
+  &:hover {
+    &::before {
+      transform: scaleX(1);
+    }
+  }
+}
+
+/*Text size*/
+h4 {
+  color: var(--text-color);
+  font-size: 0.8rem;
+  margin-top: 8px;
+  font-family: var(--font-family);
+}
+
+svg {
+  color: white;
+  font-size: 1.5rem;
+}
+
+.category-selection {
+  padding-top: 10px;
+  padding-left: 30px;
+  padding-right: 30px;
+  height: auto;
+  margin: 20px;
 }

@@ -1,0 +1,36 @@
+/*Root*/
+/*Naming of all variables*/
+:root {
+  --background-color: #fff;
+  --background-light: #fff;
+  --primary-color: rgb(255, 140, 0);
+  --shadow-color: rgba(0, 0, 0, 0.3);
+  --text-color: whitesmoke;
+  --text-light: #575757;
+  --font-size: 18px;
+  --animation-speed: 1;
+  --font-family: "Roboto", sans-serif;
+}
+
+.form-container {
+  position: relative;
+  width: 100%;
+  input {
+    border: none;
+    background: var(--background-color);
+    font-size: 1.4rem;
+    color: black;
+    padding: 13px 80px;
+    border: none;
+    border-radius: 1rem;
+    outline: none;
+    width: 100%;
+  }
+  svg {
+    position: absolute;
+    top: 50%;
+    left: 1%;
+    transform: translate(100%, -50%);
+    color: black;
+  }
+}

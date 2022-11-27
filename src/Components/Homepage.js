@@ -75,7 +75,11 @@ const Homepage = () => {
                   </p>
                 );
               })}
-              <Button variant="primary" style={{ marginTop: 30 }}>
+              <Button
+                variant="primary"
+                href={"/Authentication"}
+                style={{ marginTop: 30 }}
+              >
                 {" "}
                 Sign In Now{" "}
               </Button>
