@@ -1,0 +1,36 @@
+/*Root*/
+/*Naming of all variables*/
+:root {
+  --background-color: #fff;
+  --background-light: #fff;
+  --primary-color: rgb(255, 140, 0);
+  --shadow-color: rgba(0, 0, 0, 0.3);
+  --text-color: whitesmoke;
+  --text-light: #575757;
+  --font-size: 18px;
+  --animation-speed: 1;
+  --font-family: "Roboto", sans-serif;
+}
+
+.recipe-search {
+  display: flex;
+  position: relative;
+  z-index: 1;
+  align-items: center;
+  background-color: #1b1b1b;
+  font-family: var(--font-family);
+  color: var(--text-color);
+}
+
+.recipe-search-info {
+  padding: 105px 30px;
+  text-align: left;
+}
+
+.project-card {
+  padding-top: 60px;
+  padding-bottom: 50px;
+  padding-left: 30px;
+  padding-right: 30px;
+  height: auto;
+}

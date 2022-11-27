@@ -1,0 +1,108 @@
+/*Root*/
+/*Naming of all variables*/
+:root {
+  --background-color: #fff;
+  --background-light: #fff;
+  --primary-color: rgb(255, 140, 0);
+  --shadow-color: rgba(0, 0, 0, 0.3);
+  --text-color: whitesmoke;
+  --text-light: #575757;
+  --font-size: 18px;
+  --animation-speed: 1;
+  --font-family: "Roboto", sans-serif;
+}
+
+.recipe-home {
+  display: flex;
+  position: relative;
+  z-index: 1;
+  align-items: center;
+  background-color: #1b1b1b;
+  font-family: var(--font-family);
+  color: var(--text-color);
+}
+
+.recipe-info {
+  padding: 85px 30px;
+  text-align: left;
+}
+
+/*homepage title spacing*/
+.home-title {
+  padding-top: 80px;
+}
+
+.title {
+  color: var(--text-color);
+  font-size: 2.5em;
+  margin-bottom: 0.25em;
+  font-weight: 900;
+}
+
+/*Content inside title*/
+.title-info {
+  color: var(--text-light);
+  color: var(--text-color);
+  font-size: 1em;
+  letter-spacing: 1px;
+  line-height: 1.4em;
+  margin-bottom: 1.25em;
+}
+
+/*Grid box for images*/
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.45vw;
+  padding: 10px 20px;
+}
+
+/*Styles for each image*/
+img {
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+/* Position for each image*/
+.custom-image {
+  height: 0;
+  width: 80%;
+  position: relative;
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+/*Spacing for signup row*/
+.sign-title {
+  padding-top: 120px;
+}
+
+.signin-item {
+  border-left: 0.2em solid var(--primary-color);
+  margin-bottom: 0.5em;
+  padding-left: 0.5em;
+  color: var(--text-color);
+  font-weight: bold;
+}
+
+/*button transistions*/
+.fork-btn-inner {
+  position: relative;
+  top: 0;
+  transition: top ease 0.4s;
+}
+
+/*button transistions*/
+.fork-btn-inner:hover {
+  top: -5px;
+}
+
+/*button transistions*/
+.fork-btn-inner:hover::after {
+  width: 0%;
+}

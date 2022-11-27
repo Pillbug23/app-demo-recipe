@@ -1,0 +1,19 @@
+/*Root*/
+/*Naming of all variables*/
+:root {
+  --background-color: #fff;
+  --background-light: #fff;
+  --primary-color: rgb(255, 140, 0);
+  --shadow-color: rgba(0, 0, 0, 0.3);
+  --text-color: whitesmoke;
+  --text-light: #575757;
+  --font-size: 18px;
+  --animation-speed: 1;
+  --font-family: "Roboto", sans-serif;
+}
+
+.category {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0rem;
+}

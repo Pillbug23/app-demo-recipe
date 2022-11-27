@@ -1,0 +1,36 @@
+/*Root*/
+/*Naming of all variables*/
+:root {
+  --background-color: #fff;
+  --background-light: #fff;
+  --primary-color: rgb(255, 140, 0);
+  --shadow-color: rgba(0, 0, 0, 0.3);
+  --text-color: #333;
+  --text-light: #575757;
+  --font-size: 20px;
+  --animation-speed: 1;
+  --font-family: "Roboto", sans-serif;
+}
+
+.recipe-card {
+  font-family: (--font-family);
+  color: #333;
+  font-size: 1em;
+  letter-spacing: 1px;
+  line-height: 1.4em;
+  background-color: var(--background-color);
+  transition: all 0.5s ease 0s;
+  height: 95%;
+}
+
+.recipe-title {
+  margin-top: 6;
+  text-align: left;
+  font-size: 12px;
+}
+
+.recipe-name {
+  padding: 12px 0px;
+  text-align: left;
+  font-size: var(--font-size);
+}

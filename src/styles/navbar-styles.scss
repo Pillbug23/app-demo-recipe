@@ -1,0 +1,103 @@
+/*Root*/
+/*Naming of all variables*/
+:root {
+  --background-color: #fff;
+  --background-light: #fff;
+  --primary-color: rgb(255, 140, 0);
+  --shadow-color: rgba(0, 0, 0, 0.3);
+  --text-color: #0a0a0a;
+  --text-light: #575757;
+  --font-size: 18px;
+  --animation-speed: 1;
+}
+
+/*Navbar styling*/
+.navbar {
+  height: 70px;
+  box-shadow: 0 3px 6px var(--shadow-color);
+  background-color: var(--background-color);
+  display: flex;
+  padding: 0.5rem 2rem;
+  color: var(--text-color);
+  font-size: var(--font-size);
+  font-family: "Roboto", sans-serif;
+}
+
+/*Color of the name of brand*/
+.navbar-brand {
+  color: var(--primary-color) !important;
+}
+
+/*Styles of collapse*/
+.navbar-toggler {
+  position: relative;
+  background-color: transparent !important;
+  border-color: var(--primary-color);
+  border-width: 2px;
+}
+
+/*When screen size shrinks make font bigger/background visible, disable hover line*/
+@media (max-width: 767px) {
+  .navbar {
+    padding: 2rem 2rem;
+    height: 90px;
+    font-size: 1.4rem;
+    background-color: var(--background-color);
+  }
+  .navbar-nav .nav-item a::after {
+    display: none;
+  }
+  .ms-auto {
+    padding-top: 30px;
+  }
+}
+
+/*Bar style for smaller devices*/
+.nav-blacked {
+  background-color: var(--background-color);
+  transition: all 0.3s ease-out 0s;
+  box-shadow: 0px 10px 10px 0px rgba(9, 5, 29, 0.171);
+  backdrop-filter: blur(15px);
+}
+
+/*Size of the logo*/
+.nav-logo {
+  width: 34px;
+  height: 34px;
+}
+
+.form-check .form-switch .text-light {
+  position: relative;
+  height: 30px;
+  z-index: 1;
+}
+
+/*Aesthestics each item*/
+.nav-link {
+  position: relative;
+  z-index: 1;
+  letter-spacing: 1px;
+  font-size: 0.9em;
+
+  /*Inserts Pseudo element*/
+  &::before {
+    content: "";
+    display: inline-block;
+    height: 4px;
+    width: 100%;
+    background-color: var(--primary-color);
+    bottom: 3px;
+    position: absolute;
+    left: 0;
+    border-radius: 20px;
+    font-weight: bold;
+    transform: scaleX(0);
+    transition: transform calc(var(--animation-speed) * 0.2s) ease-in-out;
+  }
+
+  &:hover {
+    &::before {
+      transform: scaleX(1);
+    }
+  }
+}
