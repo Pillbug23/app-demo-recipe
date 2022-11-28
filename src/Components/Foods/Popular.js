@@ -22,7 +22,7 @@ function Popular() {
       setPopular(JSON.parse(check));
     } else {
       const api = await fetch(
-        `https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&number=4`
+        `https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&number=8`
       );
       const data = await api.json();
       /*Store into a string to be saved into Local storage */
@@ -37,9 +37,12 @@ function Popular() {
         return (
           <Col md={3} xs={6}>
             <Card className="recipe-card" key={index}>
-              <Link to={"/Information/" + recipe.id}>
+              <Link
+                to={"/Information/" + recipe.id}
+                style={{ textDecoration: "none" }}
+              >
                 <Card.Img variant="top" src={recipe.image} alt="card-img" />
-                <Card.Body>
+                <Card.Body style={{ color: "#1b1b1b" }}>
                   <Card.Title className="recipe-title">
                     <span style={{ color: "rgb(255, 140, 0)" }}>Recipe</span> |
                     From {recipe.sourceName}

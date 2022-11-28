@@ -5,18 +5,23 @@ import Searched from "./Searched";
 import Cuisine from "./Cuisine";
 import Authentication from "../Components/Authentication";
 import RecipeInformation from "./RecipeInformation.js";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
+import { AnimatePresence } from "framer-motion";
 
 function Pages() {
+  const location = useLocation();
+
   return (
-    <Routes>
-      <Route path="/" element={<Homepage />} />
-      <Route path="/Recipes" element={<Recipes />} />
-      <Route path="/Recipes/:type" element={<Cuisine />} />
-      <Route path="/Searched/:search" element={<Searched />} />
-      <Route path="/Information/:name" element={<RecipeInformation />} />
-      <Route path="/Authentication" element={<Authentication />} />
-    </Routes>
+    <AnimatePresence exitBeforeEnter>
+      <Routes Location={location} key={location.pathname}>
+        <Route path="/" element={<Homepage />} />
+        <Route path="/Recipes" element={<Recipes />} />
+        <Route path="/Recipes/:type" element={<Cuisine />} />
+        <Route path="/Searched/:search" element={<Searched />} />
+        <Route path="/Information/:name" element={<RecipeInformation />} />
+        <Route path="/Authentication" element={<Authentication />} />
+      </Routes>
+    </AnimatePresence>
   );
 }
 

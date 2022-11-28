@@ -6,6 +6,7 @@ import "../styles/homepage-styles.scss";
 import HomeImage from "./HomeImage.js";
 import { Button, Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import img1 from "../Images/Gallery/img_1.jpg";
 import img2 from "../Images/Gallery/img_2.jpg";
 import img3 from "../Images/Gallery/img_3.jpg";
@@ -29,72 +30,79 @@ const Homepage = () => {
   ];
 
   return (
-    <section>
-      <Container fluid className="recipe-home" id="home">
-        <Container className="recipe-info">
-          <Row>
-            <Col md={6} className="home-title">
-              <h1 className="title"> Learn new recipes and more </h1>
-              <p style={{ paddingTop: 10 }} className="title-info">
-                {" "}
-                Looking for a great home-cooked meal? Looking to pretend that
-                you're the next Gordon Ramsey? Calcipes is a place where you can
-                search for recipes. Look into exploring recipes by searching by
-                category or look into our most popular recipes.
-              </p>
-              <Button variant="primary" href={"/Recipes"} type="button">
-                Explore now
-              </Button>
-            </Col>
-            <Col md={6} className="home-title">
-              <div className="gallery">
-                {imageGallery.map((src, index) => {
-                  return <HomeImage key={index} imgSrc={src} />;
+    <motion.div
+      animate={{ opacity: 1 }}
+      initial={{ opacity: 0 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.5 }}
+    >
+      <section>
+        <Container fluid className="recipe-home" id="home">
+          <Container className="recipe-info">
+            <Row>
+              <Col md={6} className="home-title">
+                <h1 className="title"> Learn new recipes and more </h1>
+                <p style={{ paddingTop: 10 }} className="title-info">
+                  {" "}
+                  Looking for a great home-cooked meal? Looking to pretend that
+                  you're the next Gordon Ramsey? Calcipes is a place where you
+                  can search for recipes. Look into exploring recipes by
+                  searching by category or look into our most popular recipes.
+                </p>
+                <Button variant="primary" href={"/Recipes"} type="button">
+                  Explore now
+                </Button>
+              </Col>
+              <Col md={6} className="home-title">
+                <div className="gallery">
+                  {imageGallery.map((src, index) => {
+                    return <HomeImage key={index} imgSrc={src} />;
+                  })}
+                </div>
+              </Col>
+            </Row>
+            <Row>
+              <Col md={7} className="sign-title">
+                <img
+                  src={img10}
+                  alt="food"
+                  style={{
+                    maxHeight: "500px",
+                    width: "100%",
+                    objectFit: "cover",
+                  }}
+                />
+              </Col>
+              <Col md={5} className="sign-title">
+                <h1 className="title"> Improve your culinary skills </h1>
+                {genericList.map((item, index) => {
+                  return (
+                    <p className="signin-item" key={index}>
+                      {item}
+                    </p>
+                  );
                 })}
-              </div>
-            </Col>
-          </Row>
-          <Row>
-            <Col md={7} className="sign-title">
-              <img
-                src={img10}
-                alt="food"
-                style={{
-                  maxHeight: "500px",
-                  width: "100%",
-                  objectFit: "cover",
-                }}
-              />
-            </Col>
-            <Col md={5} className="sign-title">
-              <h1 className="title"> Improve your culinary skills </h1>
-              {genericList.map((item, index) => {
-                return (
-                  <p className="signin-item" key={index}>
-                    {item}
-                  </p>
-                );
-              })}
-              <Button
-                variant="primary"
-                href={"/Authentication"}
-                style={{ marginTop: 30 }}
-              >
-                {" "}
-                Sign In Now{" "}
-              </Button>
-            </Col>
-          </Row>
-          <Row>
-            <Col md={12} className="sign-title">
-              <h1 className="title" style={{ textAlign: "center" }}>
-                Check out some holiday-themed recipes
-              </h1>
-            </Col>
-          </Row>
+                <Button
+                  variant="primary"
+                  href={"/Authentication"}
+                  style={{ marginTop: 30 }}
+                >
+                  {" "}
+                  Sign In Now{" "}
+                </Button>
+              </Col>
+            </Row>
+            <Row>
+              <Col md={12} className="sign-title">
+                <h1 className="title" style={{ textAlign: "center" }}>
+                  Check out some holiday-themed recipes
+                </h1>
+              </Col>
+            </Row>
+          </Container>
         </Container>
-      </Container>
-    </section>
+      </section>
+    </motion.div>
   );
 };
 
