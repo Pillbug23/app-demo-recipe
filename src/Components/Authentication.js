@@ -4,6 +4,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import img11 from "../Images/img_11.jpg";
 import "../styles/signin-styles.scss";
+import Login from "../Components/LoginState/Login.js";
 import Form from "react-bootstrap/Form";
 import { Button } from "react-bootstrap";
 import { motion } from "framer-motion";
@@ -56,6 +57,9 @@ function Authentication() {
 
                 <span style={{ backgroundColor: "#e2ddcc", height: 1 }}></span>
                 <span className="line-break"> or </span>
+                <Form.Group className="mb-3" controlId="formBasicButton">
+                  <Login />
+                </Form.Group>
               </Form>
             </Col>
           </Row>

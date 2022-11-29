@@ -5,10 +5,13 @@ import Container from "react-bootstrap/Container";
 import cook from "../Images/cook.png";
 import { Link } from "react-router-dom";
 import "../styles/navbar-styles.scss";
+import { useAuth0 } from "@auth0/auth0-react";
+import Logout from "../Components/LoginState/Logout";
 
 function Navigationbar() {
   const [updateNavbar, setupdateNavbar] = useState(false);
   const [expand, setExpand] = useState(false);
+  const { loginWithRedirect, isAuthenticated } = useAuth0();
 
   function scrollView(event) {
     if (window.scrollY >= 20) {
@@ -52,6 +55,23 @@ function Navigationbar() {
               paddingRight: "12px",
             }}
           >
+            {isAuthenticated && (
+              <Nav.Item
+                style={{
+                  paddingLeft: "15px",
+                  paddingRight: "15px",
+                }}
+              >
+                <Nav.Link
+                  as={Link}
+                  to="/Profile"
+                  style={{ color: "#0a0a0a", fontFamily: "Roboto" }}
+                  onClick={() => setExpand(false)}
+                >
+                  Profile
+                </Nav.Link>
+              </Nav.Item>
+            )}
             <Nav.Item
               style={{
                 paddingLeft: "15px",
@@ -82,21 +102,23 @@ function Navigationbar() {
                 Recipes
               </Nav.Link>
             </Nav.Item>
-            <Nav.Item
-              style={{
-                paddingLeft: "15px",
-                paddingRight: "15px",
-              }}
-            >
-              <Nav.Link
-                as={Link}
-                to="/Authentication"
-                style={{ color: "#0a0a0a", fontFamily: "Roboto" }}
-                onClick={() => setExpand(false)}
+            {!isAuthenticated && (
+              <Nav.Item
+                style={{
+                  paddingLeft: "15px",
+                  paddingRight: "15px",
+                }}
               >
-                Log In
-              </Nav.Link>
-            </Nav.Item>
+                <Nav.Link
+                  as={Link}
+                  to="/Authentication"
+                  style={{ color: "#0a0a0a", fontFamily: "Roboto" }}
+                  onClick={() => setExpand(false)}
+                >
+                  Log In
+                </Nav.Link>
+              </Nav.Item>
+            )}
           </Nav>
         </Navbar.Collapse>
       </Container>
