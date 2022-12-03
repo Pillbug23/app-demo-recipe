@@ -18,7 +18,16 @@ function RecipeInformation() {
 
   const fetchRecipeDetails = async () => {
     const data = await fetch(
-      `https://api.spoonacular.com/recipes/${params.name}/information?apiKey=${process.env.REACT_APP_API_KEY}`
+      `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/${params.name}/information?includeNutrition=true`,
+      {
+        method: "GET",
+        headers: {
+          "X-RapidAPI-Key":
+            "3c6c2711cfmshb15b51e9656878dp1ea62cjsn687f8f194ba6",
+          "X-RapidAPI-Host":
+            "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
+        },
+      }
     );
     const recipeDetails = await data.json();
     console.log(recipeDetails);
@@ -62,18 +71,26 @@ function RecipeInformation() {
                 <Button
                   variant="outline-warning"
                   onClick={() => setActiveTab("instructions")}
-                  className={activeTab === "instructions" ? "active" : ""}
+                  className={activeTab === "instructions" ? "actively" : ""}
                 >
                   {" "}
-                  Instructions
+                  Summary
                 </Button>
                 <Button
                   variant="outline-warning"
                   onClick={() => setActiveTab("ingredients")}
-                  className={activeTab === "ingredients" ? "active" : ""}
+                  className={activeTab === "ingredients" ? "actively" : ""}
                 >
                   {" "}
-                  Ingredients{" "}
+                  Instructions{" "}
+                </Button>
+                <Button
+                  variant="outline-warning"
+                  onClick={() => setActiveTab("nutrition")}
+                  className={activeTab === "nutrition" ? "actively" : ""}
+                >
+                  {" "}
+                  Nutrition{" "}
                 </Button>
                 <div style={{ marginTop: 30 }}>
                   {activeTab === "instructions" && (
@@ -85,6 +102,13 @@ function RecipeInformation() {
                     <p
                       dangerouslySetInnerHTML={{
                         __html: information.instructions,
+                      }}
+                    />
+                  )}
+                  {activeTab === "nutrition" && (
+                    <p
+                      dangerouslySetInnerHTML={{
+                        __html: information.nutrition.nutrients[0].name,
                       }}
                     />
                   )}

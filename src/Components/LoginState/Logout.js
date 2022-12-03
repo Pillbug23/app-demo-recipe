@@ -11,7 +11,9 @@ const Logout = () => {
         size="lg"
         type="button"
         style={{ marginTop: 15 }}
-        onClick={() => logout()}
+        onClick={() =>
+          logout({ returnTo: "https://recipe-app-gold-seven.vercel.app/" })
+        }
       >
         Logout
       </Button>

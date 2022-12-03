@@ -7,19 +7,42 @@ import Category from "../Components/Category.js";
 import Container from "react-bootstrap/Container";
 import { useParams } from "react-router-dom";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+import Spinner from "react-bootstrap/Spinner";
+import PaginateSearch from "./PaginateSearch.js";
+import SearchedPosts from "./SearchedPosts.js";
 
 function Searched() {
   const [searchedrecipes, setSearchedrecipes] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage] = useState(12);
+
+  //Get current posts
+  const indexLast = currentPage * postsPerPage;
+  const indexFirst = indexLast - postsPerPage;
+  const currentPosts = searchedrecipes.slice(indexFirst, indexLast);
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
   let params = useParams();
 
   const getSearched = async (name) => {
-    console.log(name);
+    setLoading(true);
     const data = await fetch(
-      `https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_API_KEY}&query=${name}&number=8`
+      `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch?query=${name}&number=100`,
+      {
+        method: "GET",
+        headers: {
+          "X-RapidAPI-Key":
+            "3c6c2711cfmshb15b51e9656878dp1ea62cjsn687f8f194ba6",
+          "X-RapidAPI-Host":
+            "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
+        },
+      }
     );
     const recipes = await data.json();
-    console.log(recipes);
     setSearchedrecipes(recipes.results);
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -38,20 +61,38 @@ function Searched() {
           <Row>
             <Search />
             <Category />
-            {searchedrecipes.map((recipe, index) => {
-              return (
-                <Col md={3} xs={6}>
-                  <Card className="recipe-card" key={index}>
-                    <Card.Img variant="top" src={recipe.image} alt="card-img" />
-                    <Card.Body>
-                      <Card.Text className="recipe-name">
-                        {recipe.title}
-                      </Card.Text>
-                    </Card.Body>
-                  </Card>
-                </Col>
-              );
-            })}
+            {loading ? (
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                {" "}
+                <Spinner
+                  animation="border"
+                  style={{
+                    width: "6rem",
+                    height: "6rem",
+                  }}
+                  variant="warning"
+                  role="status"
+                >
+                  <span className="visually-hidden">Loading...</span>
+                </Spinner>
+              </div>
+            ) : (
+              <>
+                <SearchedPosts posts={currentPosts} />
+                <PaginateSearch
+                  postsPerPage={postsPerPage}
+                  totalPosts={searchedrecipes.length}
+                  paginate={paginate}
+                  type={params.search}
+                />
+              </>
+            )}
           </Row>
         </Container>
       </Container>

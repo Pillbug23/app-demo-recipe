@@ -30,7 +30,7 @@ function Navigationbar() {
       expand="md"
       className={updateNavbar ? "nav-blacked" : "navbar"}
     >
-      <Container>
+      <Container className="dropdown-slider">
         <Navbar.Brand href="/" className="d-flex" style={{ paddingTop: 9 }}>
           <img
             src={cook}

@@ -14,6 +14,7 @@
 /*Navbar styling*/
 .navbar {
   height: 70px;
+  position: fixed;
   box-shadow: 0 3px 6px var(--shadow-color);
   background-color: var(--background-color);
   display: flex;
@@ -42,13 +43,17 @@
     padding: 2rem 2rem;
     height: 90px;
     font-size: 1.4rem;
-    background-color: var(--background-color);
+    background-color: #fff;
   }
   .navbar-nav .nav-item a::after {
     display: none;
   }
   .ms-auto {
     padding-top: 30px;
+  }
+  .dropdown-slider {
+    background-color: #fff;
+    border-radius: 4px;
   }
 }
 

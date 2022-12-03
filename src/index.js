@@ -12,7 +12,7 @@ root.render(
   <Auth0Provider
     domain={domain}
     clientId={clientId}
-    redirectUri={window.location.origin}
+    redirectUri={"https://recipe-app-gold-seven.vercel.app/"}
   >
     <App />
   </Auth0Provider>

@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import "../styles/homepage-styles.scss";
 import HomeImage from "./HomeImage.js";
+import Card from "react-bootstrap/Card";
 import { Button, Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -19,6 +20,29 @@ import img9 from "../Images/Gallery/img_9.jpg";
 import img10 from "../Images/Gallery/img_10.jpg";
 
 const Homepage = () => {
+  const [festive, setFestive] = useState([]);
+
+  useEffect(() => {
+    getFestive();
+  }, []);
+
+  const getFestive = async () => {
+    const data = await fetch(
+      `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch?query=christmas&number=8`,
+      {
+        method: "GET",
+        headers: {
+          "X-RapidAPI-Key":
+            "3c6c2711cfmshb15b51e9656878dp1ea62cjsn687f8f194ba6",
+          "X-RapidAPI-Host":
+            "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
+        },
+      }
+    );
+    const festiveRecipes = await data.json();
+    setFestive(festiveRecipes.results);
+  };
+
   const imageGallery = [img1, img2, img3, img4, img5, img6, img7, img8, img9];
   const genericList = [
     "Experiment with recipes",
@@ -97,6 +121,31 @@ const Homepage = () => {
                 <h1 className="title" style={{ textAlign: "center" }}>
                   Check out some holiday-themed recipes
                 </h1>
+                <Row style={{ marginTop: 25 }}>
+                  {festive.map((recipe, index) => {
+                    return (
+                      <Col md={3} xs={6}>
+                        <Card className="recipe-card" key={index}>
+                          <Link
+                            to={"/Information/" + recipe.id}
+                            style={{ textDecoration: "none" }}
+                          >
+                            <Card.Img
+                              variant="top"
+                              src={recipe.image}
+                              alt="card-img"
+                            />
+                            <Card.Body style={{ color: "#1b1b1b" }}>
+                              <Card.Text className="recipe-name">
+                                {recipe.title}
+                              </Card.Text>
+                            </Card.Body>
+                          </Link>
+                        </Card>
+                      </Col>
+                    );
+                  })}
+                </Row>
               </Col>
             </Row>
           </Container>

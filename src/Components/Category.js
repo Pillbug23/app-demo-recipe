@@ -2,7 +2,6 @@ import { FaPizzaSlice, FaHamburger } from "react-icons/fa";
 import { GiNoodles, GiSushis, GiTacos, GiShrimp } from "react-icons/gi";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Container from "react-bootstrap/Container";
 import "../styles/category-styles.scss";
 import { NavLink } from "react-router-dom";
 
