@@ -84,14 +84,6 @@ function RecipeInformation() {
                   {" "}
                   Instructions{" "}
                 </Button>
-                <Button
-                  variant="outline-warning"
-                  onClick={() => setActiveTab("nutrition")}
-                  className={activeTab === "nutrition" ? "actively" : ""}
-                >
-                  {" "}
-                  Nutrition{" "}
-                </Button>
                 <div style={{ marginTop: 30 }}>
                   {activeTab === "instructions" && (
                     <p
